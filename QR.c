@@ -51,7 +51,6 @@ double **matrix_tranpose(int row,int col,double **matrix)
 {
     double **result;
     result = matrix_calloc(col,row);
-    double tmp = 0;
     for(int32_t i = 0 ; i < row ; i++)
     {
         for(int32_t j = 0 ; j < col ; j++)
@@ -72,12 +71,18 @@ double **matrix_tranpose(int row,int col,double **matrix)
 
 double **input(double **matrix)    //you need to change here
 {
-    matrix[0][0] = 1;
-    matrix[0][1] = -4;
-    matrix[1][0] = 2;
-    matrix[1][1] = 3;
-    matrix[2][0] = 2;
-    matrix[2][1] = 2;
+    matrix[0][0] = 0;
+    matrix[0][1] = 1;
+    matrix[0][2] = 1;
+    matrix[1][0] = 1;
+    matrix[1][1] = 0;
+    matrix[1][2] = 1;
+    matrix[2][0] = 1;
+    matrix[2][1] = 1;
+    matrix[2][2] = 0;
+    matrix[3][0] = 1;
+    matrix[3][1] = 1;
+    matrix[3][2] = 1;
     return matrix;
 }
 

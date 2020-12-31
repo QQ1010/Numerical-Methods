@@ -71,7 +71,6 @@ double **matrix_mult(int32_t row_a,int32_t col_a,double **matrixa,int32_t row_b,
                 for(int32_t k = 0 ; k < row_b ; k++)
                 {
                     sum += matrixa[i][k]*matrixb[k][j];
-
                 }
                 result[i][j] = sum;
             }

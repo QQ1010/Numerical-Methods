@@ -22,17 +22,17 @@ void matrix_free(int32_t row,int32_t col,double ** matrix)
     free(matrix);
 }
 
-double **Rmatrix(double x,double y)      //you need to change here
+double **Rmatrix(double x,double y)
 {
     double r1x,r1y,r2x,r2y,r3x,r3y,rad1,rad2,rad3;
-    r1x = -1;
-    r1y = 0;
-    r2x = 1;
-    r2y = 1;
-    r3x = 1;
-    r3y = -1;
+    r1x = 2;                                      //change point    
+    r1y = 1;
+    r2x = 5;
+    r2y = 3;
+    r3x = 5;
+    r3y = -3;
     rad1 = 1;
-    rad2 = 1;
+    rad2 = 2;
     rad3 = 1;
     double **matrix = matrix_calloc(3,1);
     matrix[0][0] = pow(((x-(r1x))*(x-(r1x)) + (y-(r1y))*(y-(r1y))),1.0/2.0)-rad1;
@@ -42,17 +42,17 @@ double **Rmatrix(double x,double y)      //you need to change here
     return matrix;
 }
 
-double **D_rmatrix(double x,double y)   //you need to change here
+double **D_rmatrix(double x,double y)   
 {
     double r1x,r1y,r2x,r2y,r3x,r3y,rad1,rad2,rad3;
-    r1x = -1;
-    r1y = 0;
-    r2x = 1;
-    r2y = 1;
-    r3x = 1;
-    r3y = -1;
+    r1x = 2;                                       //change point
+    r1y = 1;
+    r2x = 5;
+    r2y = 3;
+    r3x = 5;
+    r3y = -3;
     rad1 = 1;
-    rad2 = 1;
+    rad2 = 2;
     rad3 = 1;
     double **matrix = matrix_calloc(3,2);
     matrix[0][0] = (x-(r1x))/pow(((x-(r1x))*(x-(r1x)) + (y-(r1y))*(y-(r1y))),1.0/2.0);
@@ -179,12 +179,12 @@ int main()
     double x,y;
     printf("please enter (x_0 y_0):");
     scanf("%lf %lf",&x,&y);
-    int32_t r_row = 3;                        //need to change
+    int32_t r_row = 3;                        //change according point number
     int32_t r_col = 1;
-    int32_t d_row = 3;
+    int32_t d_row = 3;                        //change according point number
     int32_t d_col = 2;
     int32_t dt_row = 2;
-    int32_t dt_col = 3;
+    int32_t dt_col = 3;                       //change according point number
     double **r_matrix;
     double **d_rmatrix;
     double **d_rTmatrix;

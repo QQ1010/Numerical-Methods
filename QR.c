@@ -71,27 +71,26 @@ double **matrix_tranpose(int row,int col,double **matrix)
 
 double **input(double **matrix)    //you need to change here
 {
-    matrix[0][0] = 0;
-    matrix[0][1] = 1;
-    matrix[0][2] = 1;
-    matrix[1][0] = 1;
+    matrix[0][0] = 1;
+    matrix[0][1] = -2;
+    matrix[0][2] = -1;
+    matrix[1][0] = 2;
     matrix[1][1] = 0;
     matrix[1][2] = 1;
-    matrix[2][0] = 1;
-    matrix[2][1] = 1;
-    matrix[2][2] = 0;
-    matrix[3][0] = 1;
-    matrix[3][1] = 1;
-    matrix[3][2] = 1;
+    matrix[2][0] = 2;
+    matrix[2][1] = -4;
+    matrix[2][2] = 2;
+    matrix[3][0] = 4;
+    matrix[3][1] = 0;
+    matrix[3][2] = 0;
     return matrix;
 }
 
 
 int main()
 {
-    int32_t row,col;
-    printf("please enter row and col:(row col)");
-    scanf("%d %d",&row,&col);
+    int32_t row = 4;  //need to change
+    int32_t col = 3;  //need to change
     double **matrix;
     matrix = matrix_calloc(row,col);
     input(matrix);

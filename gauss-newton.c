@@ -41,7 +41,12 @@ double **Rmatrix(double x,double y)
     // printf("%lf %lf %lf\n",matrix[0][0],matrix[1][0],matrix[2][0]);
     return matrix;
 }
-
+/*
+𝑟1(𝑥,𝑦) = ((x-x1)^2 + (y-y1)^2)^0.5 - rad1
+𝑟2(𝑥,𝑦)
+𝑟3(𝑥,𝑦)
+𝑟(𝑥,𝑦)=[𝑟1 𝑟2 𝑟3]𝑇   --> Rmatrix
+*/
 double **D_rmatrix(double x,double y)   
 {
     double r1x,r1y,r2x,r2y,r3x,r3y,rad1,rad2,rad3;
@@ -64,6 +69,12 @@ double **D_rmatrix(double x,double y)
     // printf("%lf %lf \n%lf %lf\n%lf %lf\n",matrix[0][0],matrix[0][1],matrix[1][0],matrix[1][1],matrix[2][0],matrix[2][1]);
     return matrix;
 }
+/*
+D_r(𝑥,𝑦) =    x-x1/S1   y-y1/S1
+            [ x-x2/S2   y-y2/S2 ]  --> Dmatrix
+              x-x3/S3   y-y3/S3
+S1 = ((x-x1)^2 + (y-y1)^2)^0.5
+*/
 
 double **matrix_tranpose(int row,int col,double **matrix)
 {

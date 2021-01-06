@@ -40,6 +40,7 @@ int main()
     for(int32_t i = num-1 ; i >= 0 ;i--)
     {
         ans *= (guess - input[i].x);
+        printf("c_%d = %lf\n",i,expon[i][0]);
         ans += expon[i][0];
     }
     printf("ans = %lf\n",ans);

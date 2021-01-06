@@ -26,31 +26,59 @@ void matrix_free(int32_t row,int32_t col,double ** matrix)
 double **Amatrix_input(int32_t row,int32_t col)   //you need to change here
 {
     double **matrix;
-    for(int32_t i = 0 ; i < row ; i++)
-    {
-        matrix[i][0] = 1;
-        matrix[i][1] = cos(2*PI*i/12);
-        matrix[i][2] = sin(2*PI*i/12);
-        matrix[i][3] = cos(4*PI*i/12);
-    }
+    matrix = matrix_calloc(row,col);
+    // for(int32_t i = 0 ; i < row ; i++)
+    // {
+        // matrix[i][0] = 1;
+        // matrix[i][1] = cos(2*PI*i/12);  //for cos
+        // matrix[i][2] = sin(2*PI*i/12);
+        // matrix[i][3] = cos(4*PI*i/12);
+    // }
+    matrix[0][0] = 1;
+    matrix[0][1] = 0;
+    matrix[1][0] = 1;
+    matrix[1][1] = 1;
+    matrix[2][0] = 1;
+    matrix[2][1] = 2;
+    matrix[3][0] = 1;
+    matrix[3][1] = 3;
+    // matrix[4][0] = 1;
+    // matrix[4][1] = 20;
+    // matrix[5][0] = 1;
+    // matrix[5][1] = 25;
+    // matrix[6][0] = 1;
+    // matrix[6][1] = 30;
     return matrix;
 }
 double **bmatrix_input(int row,int col)  //you need to change here
 {
     double **matrix;
     matrix = matrix_calloc(row,col);
-    matrix[0][0] = 6.224;
-    matrix[1][0] = 6.665;
-    matrix[2][0] = 6.241;
-    matrix[3][0] = 5.302;
-    matrix[4][0] = 5.073;
-    matrix[5][0] = 5.127;
-    matrix[6][0] = 4.994;
-    matrix[7][0] = 5.012;
-    matrix[8][0] = 5.108;
-    matrix[9][0] = 5.377;
-    matrix[10][0] = 5.510;
-    matrix[11][0] = 6.372;
+    // matrix[0][0] = 6.224;
+    // matrix[1][0] = 6.665;
+    // matrix[2][0] = 6.241;
+    // matrix[3][0] = 5.302;
+    // matrix[4][0] = 5.073;
+    // matrix[5][0] = 5.127;
+    // matrix[6][0] = 4.994;
+    // matrix[7][0] = 5.012;
+    // matrix[8][0] = 5.108;
+    // matrix[9][0] = 5.377;
+    // matrix[10][0] = 5.510;
+    // matrix[11][0] = 6.372;
+
+    // matrix[0][0] = log(53.05);
+    // matrix[1][0] = log(73.04);
+    // matrix[2][0] = log(98.31);
+    // matrix[3][0] = log(139.78);
+    // matrix[4][0] = log(193.48);
+    // matrix[5][0] = log(260.20);
+    // matrix[6][0] = log(320.39);
+    
+    matrix[0][0] = log(10);
+    matrix[1][0] = log(5);
+    matrix[2][0] = log(2);
+    matrix[3][0] = log(1);
     return matrix;
 }
 double **matrix_mult(int32_t row_a,int32_t col_a,double **matrixa,int32_t row_b,int32_t col_b,double **matrixb)
@@ -119,15 +147,18 @@ double **D_inverse(int32_t row,int32_t col,double **matrix)
 
 int main()
 {
-    int32_t row,col;
-    printf("please enter the row and col of matrix A:");    //A_T*A(x) = A_T*b
-    scanf("%d %d",&row,&col);
+    int32_t row = 4;
+    int32_t col = 2;
+    // printf("please enter the row and col of matrix A:");    //A_T*A(x) = A_T*b
+    // scanf("%d %d",&row,&col);
     double **A_matrix;
     A_matrix = matrix_calloc(row,col);
     A_matrix = Amatrix_input(row,col);
-    int32_t row_b,col_b;
-    printf("please enter the row and col of matrix b:");
-    scanf("%d %d",&row_b,&col_b);
+    // printf("check\n");
+    int32_t row_b = 4;
+    int32_t col_b = 1;
+    // printf("please enter the row and col of matrix b:");
+    // scanf("%d %d",&row_b,&col_b);
     double **b_matrix;
     b_matrix = matrix_calloc(row_b,col_b);
     b_matrix = bmatrix_input(row_b,col_b);
@@ -161,7 +192,7 @@ int main()
     ans = matrix_calloc(ans_row,ans_col);
     int32_t k = 0;
     double **buffer;
-    while(k != 10)
+    while(k != 80)
     {
         buffer = matrix_mult(T_row,col,TA_matrix,ans_row,ans_col,ans);    //(L+U)*x_k
         for(int32_t j = 0 ; j < ans_row ; j++)
@@ -176,8 +207,9 @@ int main()
     }
     for(int32_t i = 0 ; i < ans_row ; i++)
     {
-        printf("c%d = %.4lf\n",i,ans[i][0]);
+        printf("c%d = %.4lf\n",i+1,ans[i][0]);
     }
+    printf("true c1: %.4lf\n",exp(ans[0][0]));
     //count rmse
     double **bcount;
     bcount = matrix_calloc(row,ans_col);
